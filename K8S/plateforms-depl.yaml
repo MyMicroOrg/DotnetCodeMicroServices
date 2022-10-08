@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platforms-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platefromservice
+  template:
+    metadata:
+      labels:
+        app: platefromservice
+    spec:
+      containers:
+        - name: platefromservice
+          image: wishlistindia/plateformservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plateforms-custerip-ser
+spec:
+  type: ClusterIP
+  selector:
+    app: platefromservice
+  ports:
+    - name: platefromservice
+      protocol: TCP
+      port: 80
+      targetPort: 80

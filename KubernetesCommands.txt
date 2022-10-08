@@ -1,0 +1,47 @@
+-------------------------------Docker----------------------------------
+docker login
+docker logout
+
+docker build -t tagname .
+docker run -p 8080:80 -d imagename
+docker start containerID // to restart image
+
+docker ps // TO list all container
+docker images // To list all images
+
+docker rmi imageId // To remove docker image
+
+docker push imagename // To push image to docker hub repository
+
+
+
+-------------------------------Kubernates----------------------------------
+Create Yaml Deployments/Service file
+
+kubectl apply -f <filename>.yaml
+kubectl get deployments
+kubectl delete deployment <deploymentID>
+kubectl get pods
+kubectl get services
+
+Redeploy with rollout
+kubectl rollout restart deployments platforms-depl
+
+kubectl get namespaces                    
+kubectl get pods -namespace=ingress-nginx
+
+---------------------------------NGINX ----------------------------------- 
+
+C:\Windows\System32\drivers\etc     //acme.com
+
+https://github.com/kubernetes/ingress-nginx
+
+
+----------------------- Persistance volumne Claims --------------------------
+
+kubectl get pvc
+
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55word"
+
+
+ 
