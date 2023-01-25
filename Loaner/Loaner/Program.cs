@@ -1,7 +1,9 @@
+using AutoMapper;
 using Loaner.Configuration;
 using Loaner.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Loaner.Configuration.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,11 @@ _services.AddDbContext<LoanerDbContext>(options =>
 }, ServiceLifetime.Scoped);
 
 builder.Services.AddControllers();
+
+_services.AddSingleton(provider => new MapperConfiguration(cnfg =>
+{
+    cnfg.AddProfile(new AutoMapperConfiguration(provider));
+}).CreateMapper());
 
 var app = builder.Build();
 
